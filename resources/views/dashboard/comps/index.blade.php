@@ -44,10 +44,24 @@
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('site.add')</a>
                                 @endif
                             </div>
+                         
 
                         </div>
                     </form><!-- end of form -->
-
+                    <div class="row">
+                    <div class="col-12">
+                                <form action="{{ route('dashboard.importcamp') }}" method="POST" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                        {{ method_field('post') }}
+                        <div class="col-md-6">
+                                    <input type="file" name="file" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                    <button type="submit"  class="btn btn-success"> @lang('site.ImportCampFile')</button>
+                                    </div>
+                                </form>
+                             </div>
+                             </div>
                 </div><!-- end of box header -->
               
                 <div class="card-body">

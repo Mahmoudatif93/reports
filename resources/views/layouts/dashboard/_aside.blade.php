@@ -24,7 +24,7 @@
             @endif
           
             @if (auth()->user()->hasPermission('read_comps'))
-            <li><a href="{{ route('dashboard.sumcomps.index') }}"><i class="fa fa-th"></i><span>all reports</span></a></li>
+            <li><a href="{{ route('dashboard.sumcomps.index') }}"><i class="fa fa-th"></i><span>@lang('site.reportsComps')</span></a></li>
             @endif
 
 

@@ -18,10 +18,12 @@ Route::group(
             Route::resource('comps', 'CampsController')->except(['show']);
             Route::get('/employee/pdf','CampsController@createPDF');
             Route::get('exportsum', 'CampsController@export')->name('exportsum');
-
+            Route::post('importcamp', 'CampsController@import')->name('importcamp');
   // sumcompsroutes
   Route::resource('sumcomps', 'SumCampsController')->except(['show']);
   Route::get('exporttotlal', 'SumCampsController@export')->name('exporttotlal');
+
+
             //contacts routes
             Route::resource('contacts', 'ContactsController')->except(['show']);
        

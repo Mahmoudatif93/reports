@@ -295,5 +295,10 @@ return [
     'disapproved'=>'مرفوض',
     'totalfees'=>'كل الرسوم',
     'comps'=>'مخيم',
+    
+    'STATISTICSComps'=>'أحصاء المخيم',
+    'reportsComps'=>'تقرير المخيم',
+    'searchcountary'=>'بحث بالبلد',
+    'ImportCampFile'=>'تحميل ملف المخيم',
 
 ];

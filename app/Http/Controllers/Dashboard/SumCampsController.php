@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 use PDF;
 use DB;
 use App\Exports\sumcompdExport;
+
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -34,7 +35,36 @@ class SumCampsController extends Controller
                  ->groupBy('cuntary')
                  ->get();
         
-               
+               if( isset($request->search) ){
+                $comps = DB::table('camps')
+                ->select('cuntary',
+                 DB::raw('count(compno) as compnototal'), DB::raw('count(city) as citytotal')
+                , DB::raw('count(opd) as opdtotal')
+                , DB::raw('count(surg) as surgtotal')
+                , DB::raw('count(iol) as ioltotal')
+                , DB::raw('count(glasses) as glassestotal')
+                , DB::raw('start_date ')
+              //  , DB::raw('SELECT  end_date  ORDER BY id ASC')
+                )
+                ->where('cuntary', 'like', '%' . $request->search . '%')
+               // ->orWhere('year', 'like', '%' . $request->search . '%')
+                ->groupBy('cuntary')
+                ->get();
+               }else{
+                $comps = DB::table('camps')
+                ->select('cuntary',
+                 DB::raw('count(compno) as compnototal'), DB::raw('count(city) as citytotal')
+                , DB::raw('count(opd) as opdtotal')
+                , DB::raw('count(surg) as surgtotal')
+                , DB::raw('count(iol) as ioltotal')
+                , DB::raw('count(glasses) as glassestotal')
+                , DB::raw('start_date ')
+              //  , DB::raw('SELECT  end_date  ORDER BY id ASC')
+                )
+                
+                ->groupBy('cuntary')
+                ->get();
+               }
             
 
 
@@ -60,6 +90,6 @@ class SumCampsController extends Controller
         return Excel::download( new sumcompdExport, 'totalcamp.xlsx');
     }
 
-
+ 
 
 }//end of controller

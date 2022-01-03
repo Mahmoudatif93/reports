@@ -302,5 +302,9 @@ return [
     /////////////////
 
     'comps'=>'comps',
+    'STATISTICSComps'=>'STATISTICS Comps',
+    'reportsComps'=>'reports Comps',
+    'searchcountary'=>'Search By Countary',
+    'ImportCampFile'=>'Import Camp File',
 ];
 

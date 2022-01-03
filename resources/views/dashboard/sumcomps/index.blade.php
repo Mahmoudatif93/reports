@@ -12,11 +12,11 @@
 
         <section class="content-header">
 
-            <h1>STATISTICS Comps</h1>
+            <h1>@lang('site.STATISTICSComps')</h1>
 
             <ol class="breadcrumb">
-                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> STATISTICS Comps</a></li>
-                <li class="active">STATISTICS Comps</li>
+                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.STATISTICSComps') </a></li>
+                <li class="active">@lang('site.STATISTICSComps')</li>
             </ol>
         </section>
 
@@ -26,27 +26,23 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">STATISTICS Comps <small></small></h3>
-<!--
-                    <form action="{{ route('dashboard.comps.index') }}" method="get">
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('site.STATISTICSComps')<small></small></h3>
+
+                    <form action="{{ route('dashboard.sumcomps.index') }}" method="get">
 
                         <div class="row">
 
                             <div class="col-md-4">
-                                <input type="text" name="search" class="form-control" placeholder="@lang('site.search')" value="{{ request()->search }}">
+                                <input type="text" name="search" class="form-control" placeholder="@lang('site.searchcountary')" value="{{ request()->search }}">
                             </div>
 
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('site.search')</button>
-                                @if (auth()->user()->hasPermission('create_comps'))
-                                    <a href="{{ route('dashboard.comps.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</a>
-                                @else
-                                    <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('site.add')</a>
-                                @endif
+                             
                             </div>
 
                         </div>
-                    </form>--><!-- end of form -->
+                    </form><!-- end of form -->
 
                 </div><!-- end of box header -->
               
@@ -54,10 +50,10 @@
                 <button class="btn btn-danger  mt-3 mr-5 btn-lg btn-block" id="print_Button" onclick="printDiv()"> <i
                                 class="mdi mdi-printer ml-1"></i>Pdf</button>
 
-    <a target="_blank" class="btn btn-warning mt-3 mr-5 btn-lg btn-block" href="{{ route('dashboard.exporttotlal') }}">Excel</a>
+      <!--  <a target="_blank" class="btn btn-warning mt-3 mr-5 btn-lg btn-block" href="{{ route('dashboard.exporttotlal') }}">Excel</a>
 
 
-                            <!--    <a  target="_blank" class="btn btn-primary" href="{{ URL::to('dashboard/employee/pdf') }}">Export to PDF</a>
+                            <a  target="_blank" class="btn btn-primary" href="{{ URL::to('dashboard/employee/pdf') }}">Export to PDF</a>
     -->
 
                 <div class="table-responsive"  id="print">
@@ -108,7 +104,11 @@
                                 <td>{{ $index + 1 }}</td>
                                     <td  class="table-primary" >{{ $category->cuntary }}</td>
                                     <td>{{$category->start_date}}</td>
-                                    <td></td>
+                                    <td>
+                              <?php     $end_date= \App\camp::where(['cuntary' => $category->cuntary])->orderBy('id', 'desc')->first();?>
+
+                        {{$end_date->end_date}}
+                                    </td>
                                     <td>{{ $category->compnototal }}</td>
                                     <td>{{ $category->citytotal }}</td>
                                     <td>{{ $category->opdtotal }}</td>

@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 use PDF;
 use App\Exports\CompsExport;
+use App\Imports\CampImport;
 use Maatwebsite\Excel\Facades\Excel;
 class CampsController extends Controller
 {
@@ -206,6 +207,12 @@ class CampsController extends Controller
           return Excel::download( new CompsExport, 'camps.xlsx');
       }
   
-
+      public function import() 
+      {
+  
+          Excel::import(new CampImport,request()->file('file'));
+             
+          return redirect()->back();
+      }
 
 }//end of controller
